@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
+## Install Project and Run
+
+* `git clone https://github.com/vishal002/contact-app.git`
+* `npm install` (make sure you have node version 8+ globally installed)
+* `npm start`
+* Hit this url to start 
+  `http://login.salesforce.com/services/oauth2/authorize?client_id=3MVG9yZ.WNe6byQDn_tc_.9aCjm_xoITkY9Wk9TX1us_oY_8ImbWF6cUgmkrRWmL4xlitLBRQgGA9pupDi.76
+  &redirect_uri=http%3A//localhost%3A3000&response_type=token&scopes=api%20id/`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
