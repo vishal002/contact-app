@@ -1,17 +1,29 @@
 <div class="row mt-5 contact">
-  <div class="col-5 mb-5">
+  <div class="col-8 mb-5">
     <h5>Create Contact Form</h5>
     <form [formGroup]="createForm" (submit)="onSubmit()" >
       <div class="form-row align-items-center">
-        <div class="col-sm-6">
-          <input type="text" class="form-control" placeholder="FirstName" formControlName="FirstName" aria-describedby="nameHelp">
+        <div class="col-sm-4">
+          <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName" aria-describedby="firstNameHelp">
           <small
             *ngIf="(createForm.get('FirstName').invalid && createForm.get('FirstName').dirty || createForm.get('FirstName').touched) &&
-            createForm.get('FirstName').errors?.required" id="nameHelp" class="form-text text-muted">Required
+            createForm.get('FirstName').errors?.required" id="firstNameHelp" class="form-text text-muted">Required
           </small>
         </div>
-        <div class="col-auto">
+        <div class="col-sm-4">
+          <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName" aria-describedby="lastNameHelp">
+          <small
+            *ngIf="(createForm.get('LastName').invalid && createForm.get('LastName').dirty || createForm.get('LastName').touched) &&
+            createForm.get('LastName').errors?.required" id="lastNameHelp" class="form-text text-muted">Required
+          </small>
+        </div>
+        <div class="col-sm-4">
           <button type="submit" class="btn btn-primary" [disabled]="createForm.invalid">Create Contact</button>
+        </div>
+      </div>
+      <div class="form-row align-items-center">
+        <div class="col-sm-12">
+          <small *ngIf="message">{{message}}</small>
         </div>
       </div>
     </form>
@@ -23,15 +35,15 @@
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Action</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngIf="let contact of contactList;let i = index;">
         <th scope="row">{{i}}</th>
-        <td>{{contact.name}}</td>
-        <td></td>
+        <td>{{contact.FirstName}}</td>
+        <td>{{contact.LastName}}</td>
       </tr>
       </tbody>
     </table>

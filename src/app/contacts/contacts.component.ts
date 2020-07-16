@@ -10,13 +10,16 @@ import { ContactsService } from '../services/contacts.service';
 export class ContactsComponent implements OnInit {
   createForm: FormGroup;
   contactList: any;
+  message: any;
   constructor(private fb: FormBuilder,
-              private contactsService: ContactsService) { }
+              private contactsService: ContactsService) {
+    this.message = '';
+  }
 
   ngOnInit(): void {
     this.createForm = this.fb.group({
       FirstName: ['', Validators.required],
-      LastName: ['kumar', Validators.required]
+      LastName: ['', Validators.required]
     });
     // fetch contact list call
     this.getContactList();
@@ -26,16 +29,21 @@ export class ContactsComponent implements OnInit {
       .subscribe(response => {
         this.contactList = response;
       }, error => {
+        // this.message = 'Some error occurred, try again';
         console.log(error);
       });
   }
   onSubmit() {
     this.contactsService.createContact(this.createForm.value)
       .subscribe( response => {
-       debugger;
+       console.log('updated sucessfully');
+       this.message = 'updated sucessfully';
+       this.createForm.reset();
+       this.getContactList();
       }, error => {
-        debugger;
-        console.log(error);
+        console.log(error.message);
+        this.message = 'Some error occurred';
+        setTimeout( () => this.message = '', 3000);
       });
   }
 
